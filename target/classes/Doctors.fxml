@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.Controller">
+  <children>
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" styleClass="bodybgdoctors" stylesheets="@background.css" VBox.vgrow="ALWAYS">
+         <children>
+            <Label layoutX="236.0" layoutY="-12.0" text="DOCTORS" textAlignment="CENTER" textFill="#cdc6c6" underline="true">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Label>
+            <Button layoutX="262.0" layoutY="68.0" mnemonicParsing="false" onAction="#addDoctor" prefHeight="31.0" prefWidth="100.0" text="Add" />
+            <Button layoutX="262.0" layoutY="111.0" mnemonicParsing="false" onAction="#viewDoctors" prefHeight="31.0" prefWidth="100.0" text="View" />
+            <Button layoutX="262.0" layoutY="153.0" mnemonicParsing="false" onAction="#updateDoctors" prefHeight="31.0" prefWidth="100.0" text="Update" />
+            <Button layoutX="262.0" layoutY="193.0" mnemonicParsing="false" onAction="#deleteDoctor" prefHeight="31.0" prefWidth="100.0" text="Delete" />
+            <Button layoutX="262.0" layoutY="280.0" mnemonicParsing="false" onAction="#backToMenu" prefHeight="31.0" prefWidth="100.0" text="Back" />
+         </children>
+    </AnchorPane>
+  </children>
+</VBox>
