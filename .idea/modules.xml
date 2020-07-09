@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/javafx_webinar_ex01.iml" filepath="$PROJECT_DIR$/javafx_webinar_ex01.iml" />
+      <module fileurl="file://$PROJECT_DIR$/javafx-mysql-crud.iml" filepath="$PROJECT_DIR$/javafx-mysql-crud.iml" />
     </modules>
   </component>
 </project>
