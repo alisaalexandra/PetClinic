@@ -1,0 +1,21 @@
+.bodybg{
+ -fx-background-image: url('background.jpg');
+ -fx-background-size: 100% 100%;
+}
+
+.bodybgdoctors{
+    -fx-background-image: url('doctors.jpg');
+    -fx-background-size: 100% 100%;
+   }
+
+   .bodybgappointments{
+    -fx-background-image: url('appointments.jpg');
+    -fx-background-size: 100% 100%;
+
+   }
+
+   .bodybgregisterlogin{
+    -fx-background-image: url('vet-with-animals-vector.jpg');
+    -fx-background-size: 100% 100%;
+
+   }

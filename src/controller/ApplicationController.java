@@ -1,5 +1,6 @@
 package controller;
 
+import databasecontrol.DatabaseHandler;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -18,7 +19,7 @@ import java.util.ResourceBundle;
 
 public class ApplicationController implements Initializable {
     private Connection connection;
-    private Stage primarystage;
+    private Stage currentStage;
 
     @FXML
     private TextField idField;
@@ -63,7 +64,7 @@ public class ApplicationController implements Initializable {
     private TableColumn<Appointment, String> petName;
 
     @FXML
-    private TableColumn<Appointment, String> petAge;
+    private TableColumn<Appointment, Integer> petAge;
 
     @FXML
     private TableColumn<Appointment, String> ownerLastName;
@@ -80,14 +81,14 @@ public class ApplicationController implements Initializable {
     @FXML
     private TableColumn<Appointment, String> dateColumn;
 
-    public void setPrimarystage(Stage primarystage) {
-        this.primarystage = primarystage;
+    public void setCurrentStage(Stage currentStage) {
+        this.currentStage = currentStage;
     }
 
     @FXML
     private void insertButton() {
         String query = "insert into appointment values(" + idField.getText() + ",'"
-                + petNameField.getText() + "','" + petAgeField.getText() + "','" +
+                + petNameField.getText() + "'," + petAgeField.getText() + ",'" +
                 ownerLastNameField.getText() + "','" + ownerFirstNameField.getText() + "','"
                 + doctorLastNameField.getText() + "','" + doctorFirstNameField.getText() + "','"
                 + dateField.getText() + "')";
@@ -98,10 +99,10 @@ public class ApplicationController implements Initializable {
 
     @FXML
     private void updateButton() {
-        String query = "UPDATE appointment SET Name= '" + petNameField.getText() + "',Age=" + petAgeField.getText() +
-                ",Last Name='" + ownerLastNameField.getText() + "',First Name='" + ownerLastNameField.getText() +
-                "',Last Name='" + doctorLastNameField.getText() + "',First Name='" + doctorFirstNameField.getText() +
-                "',Date='" + dateField.getText() + "' WHERE ID=" + idField.getText() + "";
+        String query = "UPDATE appointment SET petName= '" + petNameField.getText() + "',petAge=" + petAgeField.getText() +
+                ",ownerLastName='" + ownerLastNameField.getText() + "',ownerFirstName='" + ownerFirstName.getText() +
+                "',doctorLastName='" + doctorLastNameField.getText() + "',doctorFirstName='" + doctorFirstNameField.getText() +
+                "',date='" + dateField.getText() + "' WHERE ID=" + idField.getText() + "";
         executeQuery(query);
         showAppointments();
     }
@@ -114,7 +115,7 @@ public class ApplicationController implements Initializable {
     }
 
     public void executeQuery(String query) {
-        connection = getConnection();
+        connection = DatabaseHandler.getConnection();
         Statement st;
         try {
             st = connection.createStatement();
@@ -129,25 +130,9 @@ public class ApplicationController implements Initializable {
         showAppointments();
     }
 
-    public Connection getConnection() {
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            String url1 = "jdbc:mysql://localhost:3306/petclinic";
-            String user = "root";
-            String password = "";
-
-            connection = DriverManager.getConnection(url1, user, password);
-
-        } catch (SQLException | ClassNotFoundException e) {
-            System.out.println("An error occurred. Maybe user/password is invalid");
-            e.printStackTrace();
-        }
-        return connection;
-    }
-
     public ObservableList<Appointment> getApps() {
         ObservableList<Appointment> appointments = FXCollections.observableArrayList();
-        connection = getConnection();
+        connection = DatabaseHandler.getConnection();
         String query = "SELECT * FROM appointment ";
         Statement statement;
         ResultSet resultSet;
@@ -174,6 +159,7 @@ public class ApplicationController implements Initializable {
 
         idColumn.setCellValueFactory(new PropertyValueFactory<Appointment, Integer>("id"));
         petName.setCellValueFactory(new PropertyValueFactory<Appointment, String>("petName"));
+        petAge.setCellValueFactory(new PropertyValueFactory<Appointment, Integer>("petAge"));
         ownerLastName.setCellValueFactory(new PropertyValueFactory<Appointment, String>("ownerLastName"));
         ownerFirstName.setCellValueFactory(new PropertyValueFactory<Appointment, String>("ownerFirstName"));
         doctorLastName.setCellValueFactory(new PropertyValueFactory<Appointment, String>("doctorLastName"));
@@ -184,6 +170,6 @@ public class ApplicationController implements Initializable {
     }
 
     public void exit(ActionEvent actionEvent) {
-        primarystage.close();
+        currentStage.close();
     }
 }
