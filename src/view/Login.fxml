@@ -19,7 +19,7 @@
             </Text>
             <TextField fx:id="txtUsername" alignment="CENTER" layoutX="245.0" layoutY="143.0" prefHeight="26.0" prefWidth="156.0" promptText="Your unique ID" />
             <Button fx:id="loginButton" layoutX="276.0" layoutY="260.0" mnemonicParsing="false" onAction="#loginButton" prefHeight="26.0" prefWidth="87.0" text="Login" />
-            <Label fx:id="txtStatus" layoutX="232.0" layoutY="349.0" prefHeight="19.0" prefWidth="173.0" textAlignment="CENTER" textFill="#ee0000">
+            <Label fx:id="txtStatus" alignment="CENTER" layoutX="177.0" layoutY="348.0" prefHeight="26.0" prefWidth="292.0" textAlignment="CENTER" textFill="#ee0000">
                <font>
                   <Font name="Cambria Bold" size="18.0" />
                </font>

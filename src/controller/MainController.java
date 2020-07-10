@@ -30,6 +30,7 @@ public class MainController implements Initializable {
     }
 
     public void exit(ActionEvent actionEvent) {
+        primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         primaryStage.close();
     }
 
