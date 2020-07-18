@@ -8,7 +8,7 @@ public class DatabaseHandler {
         Connection connection = null;
         String url = "jdbc:mysql://localhost:3306/petclinic?autoReconnect=true&useSSL=false";
         String user = "root";
-        String pass = "qwerty123";
+        String pass = "";
         try {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection(url, user, pass);
